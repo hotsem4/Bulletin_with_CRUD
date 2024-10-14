@@ -9,5 +9,4 @@ public class BulletinWithCrudApplication {
     public static void main(String[] args) {
         SpringApplication.run(BulletinWithCrudApplication.class, args);
     }
-
 }

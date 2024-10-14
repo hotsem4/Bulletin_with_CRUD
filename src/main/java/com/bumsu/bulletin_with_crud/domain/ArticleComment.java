@@ -22,14 +22,13 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 @ToString
 @Getter
-@Table(name = "ArticleComment", indexes = {  // 검색의 용이성을 위해 index로 만들 것들
+@Table(indexes = {  // 검색의 용이성을 위해 index로 만들 것들
     @Index(columnList = "content"),
     @Index(columnList = "createdAt"),
     @Index(columnList = "createdBy")
 })
-@EntityListeners(EntityListeners.class)
 @Entity
-public class ArticleComment {
+public class ArticleComment extends AuditingFields{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -39,18 +38,6 @@ public class ArticleComment {
     @Setter @Column(nullable = false, length = 500)
     private String content;  // 본문
 
-    @CreatedDate  // 생성 일시 자동 입력
-    @Column(nullable = false)
-    private LocalDateTime createdAt;  //생성 일시
-    @CreatedBy  // 생성자 자동 입력
-    @Column(nullable = false, length = 100)
-    private String createdBy;  // 생성자
-    @LastModifiedDate   // 마지막 수정 일자 자동 입력
-    @Column(nullable = false)
-    private LocalDateTime modifiedAt;  // 수정일시
-    @LastModifiedBy   // 마지막 수정자 입력
-    @Column(nullable = false, length = 100)
-    private String modifiedBy;  // 수정자
 
     protected ArticleComment() {
     }

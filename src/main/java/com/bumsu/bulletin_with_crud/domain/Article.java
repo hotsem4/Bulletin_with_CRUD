@@ -34,9 +34,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
     @Index(columnList = "createdAt"),
     @Index(columnList = "createdBy")
 })
-@EntityListeners(AuditingEntityListener.class)
+
 @Entity
-public class Article {
+public class Article extends AuditingFields{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)  // mysql 방식으로 세팅
     private Long id;
 
@@ -53,18 +53,7 @@ public class Article {
     @ToString.Exclude
     private final Set<ArticleComment> articleComment = new LinkedHashSet<>();
 
-    @CreatedDate  // 생성 일시 자동 입력
-    @Column(nullable = false)
-    private LocalDateTime createdAt;  //생성 일시
-    @CreatedBy  // 생성자 자동 입력
-    @Column(nullable = false, length = 100)
-    private String createdBy;  // 생성자
-    @LastModifiedDate   // 마지막 수정 일자 자동 입력
-    @Column(nullable = false)
-    private LocalDateTime modifiedAt;  // 수정일시
-    @LastModifiedBy   // 마지막 수정자 입력
-    @Column(nullable = false, length = 100)
-    private String modifiedBy;  // 수정자
+
 
     protected Article() {  // 하이버네이트 기준 모든 Jpa Entity는 기본 생성자를 갖고 있어야 한다.
     } // 평소 오픈할 필요가 없기 때문에 protected로 하자.

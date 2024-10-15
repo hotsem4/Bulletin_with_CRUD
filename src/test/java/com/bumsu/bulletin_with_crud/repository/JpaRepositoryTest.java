@@ -20,8 +20,6 @@ import static org.assertj.core.api.Assertions.*;
 @DataJpaTest  // Jpa관련 집중 Test할 때 쓰임.
 class JpaRepositoryTest {
 
-    private static final Logger log = LoggerFactory.getLogger(JpaRepositoryTest.class);
-
     private final ArticleRepository articleRepository;
     private final ArticleCommentRepository articleCommentRepository;
 
@@ -76,7 +74,7 @@ class JpaRepositoryTest {
         Article article = articleRepository.findById(1L).orElseThrow();
         long previousArticleCount = articleRepository.count();
         long previousArticleCommentCount = articleCommentRepository.count();
-        int deletedCommentCount = article.getArticleComment().size();
+        int deletedCommentCount = article.getArticleComments().size();
         // when
         articleRepository.delete(article);
 

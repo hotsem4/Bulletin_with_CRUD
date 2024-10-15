@@ -28,7 +28,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @ToString
 @Getter
-@Table(name = "Article", indexes = {
+@Table(indexes = {
     @Index(columnList = "title"),
     @Index(columnList = "hashtag"),
     @Index(columnList = "createdAt"),
@@ -51,7 +51,7 @@ public class Article extends AuditingFields{
     @OrderBy("id")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     @ToString.Exclude
-    private final Set<ArticleComment> articleComment = new LinkedHashSet<>();
+    private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
 
 

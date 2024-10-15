@@ -18,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @ToString
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
-public class AuditingFields {
+public abstract class AuditingFields {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)  // 파라미터 파싱을 위한
     @CreatedDate  // 생성 일시 자동 입력
     @Column(nullable = false, updatable = false)

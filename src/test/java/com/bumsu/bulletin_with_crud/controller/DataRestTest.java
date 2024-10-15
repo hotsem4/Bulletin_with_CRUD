@@ -52,10 +52,8 @@ class DataRestTest {
 
     @DisplayName("[api] 게시글 -> 댓글 리스트 조회")
     @Test
-    void givenNothing_whenRequestingArticleCommentsFromArticle_thenReturnsArticleCommentsJsonResponse() throws Exception {
-        // Given
+    void givenNothing_whenRequestingArticleCommentsFromArticle_thenReturnArticleCommentsJsonResponse() throws Exception {
 
-        // When & Then
         mvc.perform(get("/api/articles/1/articleComments"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
